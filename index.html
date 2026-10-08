@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CuroaAgent — AI Digital Doctor</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-top">
+
+            <!-- BRAND -->
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+
+                <div>
+                    <h2>CuroaAgent</h2>
+                    <span>AI Digital Doctor</span>
+                </div>
+
+            </div>
+
+
+            <!-- NEW CHAT -->
+
+            <button
+                class="new-chat-btn"
+                id="newChatBtn"
+                type="button"
+            >
+
+                <i class="fa-solid fa-plus"></i>
+
+                <span>New Chat</span>
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             RECENT CHATS
+        ================================================== -->
+
+        <div class="history-section">
+
+            <p class="section-title">
+                RECENT CHATS
+            </p>
+
+
+            <button
+                class="history-item"
+                type="button"
+            >
+
+                <i class="fa-regular fa-message"></i>
+
+                <span>Fever and cough</span>
+
+            </button>
+
+
+            <button
+                class="history-item"
+                type="button"
+            >
+
+                <i class="fa-regular fa-message"></i>
+
+                <span>Migraine treatment</span>
+
+            </button>
+
+
+            <button
+                class="history-item"
+                type="button"
+            >
+
+                <i class="fa-regular fa-message"></i>
+
+                <span>Cold symptoms</span>
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             RESEARCH
+        ================================================== -->
+
+        <div class="research-section">
+
+            <p class="section-title">
+                RESEARCH
+            </p>
+
+
+            <button
+                class="research-history-item"
+                type="button"
+            >
+
+                <span class="research-dot general-dot"></span>
+
+                <span>General Medical Search</span>
+
+            </button>
+
+
+            <button
+                class="research-history-item"
+                type="button"
+            >
+
+                <span class="research-dot studies-dot"></span>
+
+                <span>Medical Studies</span>
+
+            </button>
+
+
+            <button
+                class="research-history-item"
+                type="button"
+            >
+
+                <span class="research-dot news-dot"></span>
+
+                <span>Latest Medical News</span>
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             SIDEBAR BOTTOM
+        ================================================== -->
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-divider"></div>
+
+
+            <!-- ABOUT -->
+
+            <button
+                class="sidebar-link"
+                type="button"
+                id="aboutBtn"
+            >
+
+                <i class="fa-solid fa-circle-info"></i>
+
+                <span>About CuroaAgent</span>
+
+            </button>
+
+
+            <!-- PRIVACY & SAFETY -->
+
+            <button
+                class="sidebar-link"
+                type="button"
+                id="privacySafetyBtn"
+            >
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                <span>Privacy & Safety</span>
+
+            </button>
+
+
+            <!-- SETTINGS -->
+
+            <button
+                class="sidebar-link"
+                id="settingsBtn"
+                type="button"
+            >
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>Settings</span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="main">
+
+
+        <!-- =================================================
+             TOP BAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <button
+                class="menu-btn"
+                id="menuBtn"
+                type="button"
+            >
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+
+            <div class="mobile-brand">
+
+                <div class="mini-logo">
+
+                    <i class="fa-solid fa-heart-pulse"></i>
+
+                </div>
+
+                <span>CuroaAgent</span>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="status">
+
+                    <span class="status-dot"></span>
+
+                    Agent Online
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             CHAT CONTAINER
+        ================================================== -->
+
+        <section
+            class="chat-container"
+            id="chatContainer"
+        >
+
+
+            <!-- =================================================
+                 WELCOME
+            ================================================== -->
+
+            <div
+                class="welcome"
+                id="welcome"
+            >
+
+                <div class="welcome-logo">
+
+                    <i class="fa-solid fa-heart-pulse"></i>
+
+                </div>
+
+
+                <h1>
+                    How can I help you today?
+                </h1>
+
+
+                <p>
+                    Ask CuroaAgent about your health concerns.
+                    I'll research medical information and explain
+                    it in simple language.
+                </p>
+
+
+                <!-- =================================================
+                     QUICK QUESTIONS
+                ================================================== -->
+
+                <div class="quick-grid">
+
+
+                    <!-- FEVER -->
+
+                    <button
+                        class="quick-card"
+                        type="button"
+                        data-question="I have a fever. What could be causing it and when should I see a doctor?"
+                    >
+
+                        <div class="quick-icon fever">
+
+                            <i class="fa-solid fa-temperature-high"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Fever
+                            </strong>
+
+                            <span>
+                                Possible causes & warning signs
+                            </span>
+
+                        </div>
+
+                    </button>
+
+
+
+                    <!-- COUGH -->
+
+                    <button
+                        class="quick-card"
+                        type="button"
+                        data-question="I have a cough. What could be causing it and what should I do?"
+                    >
+
+                        <div class="quick-icon cough">
+
+                            <i class="fa-solid fa-lungs"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Cough
+                            </strong>
+
+                            <span>
+                                Causes & when to seek care
+                            </span>
+
+                        </div>
+
+                    </button>
+
+
+
+                    <!-- HEADACHE -->
+
+                    <button
+                        class="quick-card"
+                        type="button"
+                        data-question="I have a headache. What are the common causes and when is it serious?"
+                    >
+
+                        <div class="quick-icon headache">
+
+                            <i class="fa-solid fa-head-side-virus"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Headache
+                            </strong>
+
+                            <span>
+                                Common causes & warning signs
+                            </span>
+
+                        </div>
+
+                    </button>
+
+
+
+                    <!-- STOMACH -->
+
+                    <button
+                        class="quick-card"
+                        type="button"
+                        data-question="I have stomach pain. What could be causing it and when should I see a doctor?"
+                    >
+
+                        <div class="quick-icon stomach">
+
+                            <i class="fa-solid fa-stomach"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Stomach Pain
+                            </strong>
+
+                            <span>
+                                Possible causes & symptoms
+                            </span>
+
+                        </div>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 MESSAGES
+            ================================================== -->
+
+            <div
+                class="messages"
+                id="messages"
+            ></div>
+
+
+
+            <!-- =================================================
+                 AGENT STATUS
+            ================================================== -->
+
+            <div
+                class="agent-status"
+                id="agentStatus"
+                style="display: none;"
+            >
+
+                <div class="agent-status-header">
+
+                    <div class="agent-status-icon">
+
+                        <i class="fa-solid fa-heart-pulse"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            CuroaAgent is researching
+                        </strong>
+
+                        <span id="statusText">
+                            Understanding your question...
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="research-steps">
+
+
+                    <div
+                        class="research-step"
+                        id="step1"
+                    >
+
+                        <span class="step-number">
+                            1
+                        </span>
+
+                        <span>
+                            Understanding your question
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="research-step"
+                        id="step2"
+                    >
+
+                        <span class="step-number">
+                            2
+                        </span>
+
+                        <span>
+                            Selecting medical research
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="research-step"
+                        id="step3"
+                    >
+
+                        <span class="step-number">
+                            3
+                        </span>
+
+                        <span>
+                            Analyzing information
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="research-step"
+                        id="step4"
+                    >
+
+                        <span class="step-number">
+                            4
+                        </span>
+
+                        <span>
+                            Preparing your answer
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             INPUT AREA
+        ================================================== -->
+
+        <div class="input-area">
+
+
+            <!-- RESEARCH MODE -->
+
+            <div class="research-controls">
+
+                <button
+                    type="button"
+                    class="research-mode active"
+                    data-engine="auto"
+                >
+
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                    Auto
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="research-mode"
+                    data-engine="google"
+                >
+
+                    General
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="research-mode"
+                    data-engine="google_scholar"
+                >
+
+                    Studies
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="research-mode"
+                    data-engine="google_news"
+                >
+
+                    Latest
+
+                </button>
+
+            </div>
+
+
+            <!-- INPUT BOX -->
+
+            <div class="input-wrapper">
+
+
+                <button
+                    class="attach-btn"
+                    id="attachBtn"
+                    type="button"
+                    title="Attach"
+                >
+
+                    <i class="fa-solid fa-paperclip"></i>
+
+                </button>
+
+
+                <textarea
+                    id="messageInput"
+                    rows="1"
+                    placeholder="Describe your health concern..."
+                ></textarea>
+
+
+                <button
+                    class="send-btn"
+                    id="sendBtn"
+                    type="button"
+                    title="Send"
+                >
+
+                    <i class="fa-solid fa-arrow-up"></i>
+
+                </button>
+
+            </div>
+
+
+            <p class="input-disclaimer">
+
+                CuroaAgent provides general medical information
+                and does not replace professional medical advice.
+
+            </p>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         SIDEBAR OVERLAY — MOBILE
+    ====================================================== -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+
+    <!-- =====================================================
+         SETTINGS MODAL
+    ====================================================== -->
+
+    <div
+        class="settings-overlay"
+        id="settingsOverlay"
+    >
+
+        <div class="settings-panel">
+
+
+            <!-- SETTINGS HEADER -->
+
+            <div class="settings-header">
+
+                <div>
+
+                    <h2>
+                        Settings
+                    </h2>
+
+                    <p>
+                        Customize your CuroaAgent experience
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="settings-close"
+                    id="closeSettingsBtn"
+                    type="button"
+                    aria-label="Close settings"
+                >
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SETTINGS BODY
+            ================================================== -->
+
+            <div
+                class="settings-body"
+                id="settingsBody"
+            >
+
+
+                <!-- THEME -->
+
+                <section class="setting-section">
+
+                    <div class="setting-icon theme-icon">
+
+                        <i class="fa-solid fa-palette"></i>
+
+                    </div>
+
+
+                    <div class="setting-info">
+
+                        <h3>
+                            Theme
+                        </h3>
+
+                        <p>
+                            Choose how CuroaAgent looks.
+                        </p>
+
+                    </div>
+
+
+                    <select
+                        id="themeSelect"
+                        class="setting-select"
+                    >
+
+                        <option value="light">
+                            Light
+                        </option>
+
+                        <option value="dark">
+                            Dark
+                        </option>
+
+                        <option value="system">
+                            System Default
+                        </option>
+
+                    </select>
+
+                </section>
+
+
+
+                <!-- FONT SIZE -->
+
+                <section class="setting-section">
+
+                    <div class="setting-icon font-icon">
+
+                        <i class="fa-solid fa-font"></i>
+
+                    </div>
+
+
+                    <div class="setting-info">
+
+                        <h3>
+                            Font Size
+                        </h3>
+
+                        <p>
+                            Adjust the text size throughout the app.
+                        </p>
+
+                    </div>
+
+
+                    <select
+                        id="fontSizeSelect"
+                        class="setting-select"
+                    >
+
+                        <option value="small">
+                            Small
+                        </option>
+
+                        <option
+                            value="medium"
+                            selected
+                        >
+                            Medium
+                        </option>
+
+                        <option value="large">
+                            Large
+                        </option>
+
+                    </select>
+
+                </section>
+
+
+
+                <!-- NOTIFICATIONS -->
+
+                <section class="setting-section">
+
+                    <div class="setting-icon notification-icon">
+
+                        <i class="fa-solid fa-bell"></i>
+
+                    </div>
+
+
+                    <div class="setting-info">
+
+                        <h3>
+                            Notifications
+                        </h3>
+
+                        <p>
+                            Allow CuroaAgent to show notifications.
+                        </p>
+
+                    </div>
+
+
+                    <label class="settings-toggle">
+
+                        <input
+                            type="checkbox"
+                            id="notificationToggle"
+                        >
+
+                        <span class="toggle-slider"></span>
+
+                    </label>
+
+                </section>
+
+
+
+                <!-- PRIVACY & DATA -->
+
+                <section class="setting-section">
+
+                    <div class="setting-icon privacy-icon">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                    </div>
+
+
+                    <div class="setting-info">
+
+                        <h3>
+                            Privacy & Data
+                        </h3>
+
+                        <p>
+                            Manage your local conversation data.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="setting-action"
+                        id="privacyBtn"
+                        type="button"
+                    >
+
+                        Manage
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </button>
+
+                </section>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PRIVACY PANEL
+            ================================================== -->
+
+            <div
+                class="privacy-panel"
+                id="privacyPanel"
+            >
+
+
+                <button
+                    class="privacy-back"
+                    id="backFromPrivacyBtn"
+                    type="button"
+                >
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    Back
+
+                </button>
+
+
+                <h2>
+                    Privacy & Data
+                </h2>
+
+
+                <p class="privacy-description">
+
+                    Manage your CuroaAgent conversation data
+                    and local preferences.
+
+                </p>
+
+
+
+                <!-- CHAT HISTORY -->
+
+                <div class="privacy-card">
+
+                    <div>
+
+                        <h3>
+                            Chat History
+                        </h3>
+
+                        <p>
+                            Remove saved conversations from this browser.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="danger-btn"
+                        id="clearHistoryBtn"
+                        type="button"
+                    >
+
+                        Clear History
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- LOCAL SETTINGS -->
+
+                <div class="privacy-card">
+
+                    <div>
+
+                        <h3>
+                            Local Settings
+                        </h3>
+
+                        <p>
+                            Reset theme, font size and notification preferences.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="danger-btn"
+                        id="clearSettingsBtn"
+                        type="button"
+                    >
+
+                        Reset
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- PRIVACY NOTE -->
+
+                <div class="privacy-note">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <span>
+
+                        CuroaAgent is an educational medical AI assistant.
+                        It does not replace professional medical advice.
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
