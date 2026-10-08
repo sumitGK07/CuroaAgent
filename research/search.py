@@ -7,7 +7,10 @@ import requests
 from dotenv import load_dotenv
 
 
-# Load .env
+# =========================================================
+# LOAD ENVIRONMENT VARIABLES
+# =========================================================
+
 load_dotenv()
 
 SERPAPI_KEY = os.getenv("SERPAPI_KEY")
@@ -26,6 +29,10 @@ def search_medical(query, engine):
     - google_scholar
     - google_news
     """
+
+    # -----------------------------------------------------
+    # CHECK API KEY
+    # -----------------------------------------------------
 
     if not SERPAPI_KEY:
         return {
@@ -46,8 +53,11 @@ def search_medical(query, engine):
     }
 
 
-    # Keep the number of results small
-    # because the free SerpApi plan is limited.
+    # -----------------------------------------------------
+    # KEEP RESULTS SMALL
+    # Free SerpApi plan has limited searches.
+    # -----------------------------------------------------
+
     if engine == "google":
         params["num"] = 5
 
@@ -70,10 +80,29 @@ def search_medical(query, engine):
             timeout=20
         )
 
-        response.raise_for_status()
+
+        # -------------------------------------------------
+        # SHOW REAL SERPAPI ERROR
+        # -------------------------------------------------
+
+        if response.status_code != 200:
+            return {
+                "success": False,
+                "error": f"SerpApi HTTP {response.status_code}: {response.text}",
+                "results": []
+            }
+
+
+        # -------------------------------------------------
+        # CONVERT RESPONSE TO JSON
+        # -------------------------------------------------
 
         data = response.json()
 
+
+    # -----------------------------------------------------
+    # TIMEOUT ERROR
+    # -----------------------------------------------------
 
     except requests.exceptions.Timeout:
 
@@ -84,6 +113,10 @@ def search_medical(query, engine):
         }
 
 
+    # -----------------------------------------------------
+    # CONNECTION ERROR
+    # -----------------------------------------------------
+
     except requests.exceptions.RequestException as e:
 
         return {
@@ -92,6 +125,10 @@ def search_medical(query, engine):
             "results": []
         }
 
+
+    # -----------------------------------------------------
+    # INVALID JSON
+    # -----------------------------------------------------
 
     except ValueError:
 
@@ -103,7 +140,7 @@ def search_medical(query, engine):
 
 
     # -----------------------------------------------------
-    # SERPAPI ERROR
+    # SERPAPI API ERROR
     # -----------------------------------------------------
 
     if "error" in data:
@@ -116,7 +153,7 @@ def search_medical(query, engine):
 
 
     # -----------------------------------------------------
-    # GET RESULTS
+    # GET SEARCH RESULTS
     # -----------------------------------------------------
 
     if engine == "google_news":
@@ -158,16 +195,19 @@ def search_medical(query, engine):
             ""
         )
 
-
         # Different SerpApi engines may provide
         # different source fields.
+
         source = result.get(
             "source",
             ""
         )
 
 
-        # Google News may use source as a dictionary
+        # -------------------------------------------------
+        # GOOGLE NEWS SOURCE
+        # -------------------------------------------------
+
         if isinstance(source, dict):
 
             source = source.get(
@@ -175,6 +215,10 @@ def search_medical(query, engine):
                 ""
             )
 
+
+        # -------------------------------------------------
+        # ADD RESULT
+        # -------------------------------------------------
 
         results.append(
             {
