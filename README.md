@@ -9,6 +9,10 @@ Instead of relying only on a static knowledge base, CuroaAgent uses **SerpApi** 
 > ⚠️ CuroaAgent provides general medical information for educational purposes and does not replace a qualified healthcare professional.
 
 ---
+## CuroaAgent
+
+![CuroaAgent Website](CuroaAgent.jpg)
+
 
 ## 🚀 Project Overview
 
